@@ -92,8 +92,9 @@ if ( isset( $_REQUEST['csurl'] ) ) {
 } else if ( isset( $_SERVER['HTTP_X_PROXY_URL'] ) ) {
     $request_url = urldecode( $_SERVER['HTTP_X_PROXY_URL'] );
 } else {
-    header( $_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-    header( 'Status: 404 Not Found' );
+    header( $_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found(wj2ai)');
+    header( 'Status: 404 Not Found(wj2ai)' );
+    header( 'reason: 404 Not Found(wj2ai)' );
     $_SERVER['REDIRECT_STATUS'] = 404;
     exit;
 }
