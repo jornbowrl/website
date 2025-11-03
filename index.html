@@ -31,7 +31,7 @@
     
     .paper-thumbnail {
       flex-shrink: 0;
-      width: 120px;
+      width: 100%;
       max-height: 0;
       overflow: hidden;
       opacity: 0;
@@ -39,9 +39,9 @@
     }
     
     .paper-container.expanded .paper-thumbnail {
-      max-height: 200px;
+      max-height: 600px;
       opacity: 1;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     
     .paper-thumbnail img {
@@ -121,53 +121,16 @@
     }
     
     .paper-container.expanded .paper-details {
-      max-height: 2000px;
-    }
-    
-    .detail-buttons {
-      margin: 15px 0;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .detail-btn {
-      padding: 6px 15px;
-      background: #0066cc;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9em;
-      transition: background 0.2s ease;
-    }
-    
-    .detail-btn:hover {
-      background: #0052a3;
-    }
-    
-    .detail-btn.active {
-      background: #004080;
+      max-height: 3000px;
     }
     
     .detail-section {
-      display: none;
       margin: 15px 0;
       padding: 15px;
       background: white;
       border-radius: 4px;
       border-left: 3px solid #0066cc;
       position: relative;
-    }
-    
-    .detail-section.show {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     
     .detail-section h3 {
@@ -218,7 +181,7 @@
       overflow-x: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
-      margin-top: 30px; /* add spacing so text doesn't sit under button */
+      margin-top: 30px;
     }
     
     .paper-links {
@@ -247,6 +210,25 @@
       font-size: 0.8em;
       font-weight: bold;
       margin-left: 5px;
+    }
+
+    /* Keyword tags */
+    .paper-keywords {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+
+    .keyword-tag {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.85em;
+      font-weight: 500;
+      border: 1px solid #90caf9;
     }
   </style>
 </head>
@@ -329,10 +311,10 @@
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Xiaofei Xie</a>,
-                          <a href="#">Qiang Hu</a>,
-                          <a href="#">Shangqing Liu</a>,
-                          <a href="#">Jiongchi Yu</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
+                          <a href="https://wellido.github.io/">Qiang Hu</a>,
+                          <a href="https://shangqing-liu.github.io/">Shangqing Liu</a>,
+                          <a href="https://ttfish.cc/">Jiongchi Yu</a>,
                           <a href="#">Jiaolong Kong</a>,
                           <a href="https://personal.ntu.edu.sg/yi_li/">Yi Li</a>
                         </div>
@@ -342,6 +324,11 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Program Repair</span>
+                          <span class="keyword-tag">C/C++ Benchmark</span>
+                          <span class="keyword-tag">LLM Evaluation</span>
+                        </div>
                         <div class="paper-short-desc">
                           We introduce Defects4C, a comprehensive benchmark for evaluating LLM-based automated program repair capabilities on C/C++ bugs, addressing the significant gap in C/C++ repair research.
                         </div>
@@ -349,16 +336,10 @@
                     </div>
                     
                     <div class="paper-thumbnail">
-                      <img src="images/defects4c.png" alt="Defects4C thumbnail" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3EDefects4C%3C/text%3E%3C/svg%3E'" />
+                      <img src="images/defects4c.png" alt="Defects4C thumbnail" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3EDefects4C%3C/text%3E%3C/svg%3E'" />
                     </div>
                     
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-1')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-1')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-1')">Links</button>
-                      </div>
-                      
                       <div id="abstract-1" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -401,8 +382,8 @@
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Shangqing Liu</a>,
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://shangqing-liu.github.io/">Shangqing Liu</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="#">Jing Kai Siow</a>,
                           <a href="#">Kui Liu</a>,
                           <a href="https://personal.ntu.edu.sg/yi_li/">Yi Li</a>
@@ -413,6 +394,11 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Fault Localization</span>
+                          <span class="keyword-tag">Retrieval-Augmented</span>
+                          <span class="keyword-tag">Deep Learning APR</span>
+                        </div>
                         <div class="paper-short-desc">
                           Ratchet is a dual deep-learning Automated Program Repair (APR) system with (1) Ratchet-FL for fault localization using only code (no failing tests or bug reports) and (2) Ratchet-PG for patch generation using a retrieval-augmented transformer trained on historical fixes. Ratchet outperforms prior deep learning APR approaches on both localization and repair accuracy.
                         </div>
@@ -420,18 +406,12 @@
                     </div>
 
                     <div class="paper-thumbnail">
-                      <img src="images/ratchet.png"
+                      <img src="images/issre.png"
                           alt="RATCHET APR thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3ERATCHET%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3ERATCHET%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-2')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-2')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-2')">Links</button>
-                      </div>
-
                       <div id="abstract-2" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -459,9 +439,7 @@
                       <div id="links-2" class="detail-section">
                         <h3>Resources</h3>
                         <div class="paper-links">
-                          <a href="#" target="_blank">📄 Paper</a>
-                          <a href="#" target="_blank">💻 Project</a>
-                          <a href="#" target="_blank">📚 arXiv</a>
+                          <a href="./data/issre_RATCHET.pdf" target="_blank">📄 Paper</a>
                         </div>
                       </div>
                     </div>
@@ -478,8 +456,8 @@
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Shangqing Liu</a>,
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://shangqing-liu.github.io/">Shangqing Liu</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="https://personal.ntu.edu.sg/yi_li/">Yi Li</a>
                         </div>
                         <div class="venue-row">
@@ -488,6 +466,11 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">AIGC Detection</span>
+                          <span class="keyword-tag">Code Security</span>
+                          <span class="keyword-tag">LLM-Generated Code</span>
+                        </div>
                         <div class="paper-short-desc">
                           This work systematically evaluates commercial and open-source AI-generated content (AIGC) detectors on code-related content from modern LLMs (GPT-3.5, WizardCoder, CodeLlama). The study reveals that detectors trained on natural language struggle with code, and that fine-tuning helps within-domain but generalization remains weak.
                         </div>
@@ -495,18 +478,12 @@
                     </div>
 
                     <div class="paper-thumbnail">
-                      <img src="images/aigc-detectors.png"
+                      <img src="images/emp.png"
                           alt="AIGC detector evaluation thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3EAIGC%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3EAIGC%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-3')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-3')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-3')">Links</button>
-                      </div>
-
                       <div id="abstract-3" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -552,9 +529,9 @@
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Xiaofei Xie</a>,
-                          <a href="#">Qiang Hu</a>,
-                          <a href="#">Shangqing Liu</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
+                          <a href="https://wellido.github.io/">Qiang Hu</a>,
+                          <a href="https://shangqing-liu.github.io/">Shangqing Liu</a>,
                           <a href="https://personal.ntu.edu.sg/yi_li/">Yi Li</a>
                         </div>
                         <div class="venue-row">
@@ -563,6 +540,11 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Execution Traces</span>
+                          <span class="keyword-tag">Code Semantics</span>
+                          <span class="keyword-tag">LLM Reasoning</span>
+                        </div>
                         <div class="paper-short-desc">
                           This paper investigates whether enriching prompts or training signals with semantic/runtime information (like execution traces) actually improves Code LLM reasoning. The study proposes a generic framework for injecting such semantics into both supervised fine-tuning and inference-time prompting, and finds that — contrary to prior claims — the gains are often limited.
                         </div>
@@ -570,22 +552,16 @@
                     </div>
 
                     <div class="paper-thumbnail">
-                      <img src="images/code-semantics.png"
+                      <img src="images/emnlp.png"
                           alt="Code semantics / execution traces thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3ETrace Study%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3ETrace Study%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-4')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-4')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-4')">Links</button>
-                      </div>
-
                       <div id="abstract-4" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
-                          Code Large Language Models (Code LLMs) have shown impressive capabilities but still struggle to deeply reason about runtime behavior and actual program functionality. We identify two key challenges: (1) weak reasoning over program execution, and (2) inconsistent ways of representing semantic signals like execution traces, which hurts generalization. We propose a general framework for integrating semantic, trace-based information into prompts for code tasks, and we conduct a broad empirical study examining how such information affects both supervised fine-tuning (SFT) and test-time inference (post-training prompting). Surprisingly, our results challenge prior optimism: execution-trace semantic signals offer only limited benefits for SFT and test-time scaling of Code LLMs, suggesting that naive “just add traces” strategies are not enough to close LLM reasoning gaps.
+                          Code Large Language Models (Code LLMs) have shown impressive capabilities but still struggle to deeply reason about runtime behavior and actual program functionality. We identify two key challenges: (1) weak reasoning over program execution, and (2) inconsistent ways of representing semantic signals like execution traces, which hurts generalization. We propose a general framework for integrating semantic, trace-based information into prompts for code tasks, and we conduct a broad empirical study examining how such information affects both supervised fine-tuning (SFT) and test-time inference (post-training prompting). Surprisingly, our results challenge prior optimism: execution-trace semantic signals offer only limited benefits for SFT and test-time scaling of Code LLMs, suggesting that naive "just add traces" strategies are not enough to close LLM reasoning gaps.
                         </div>
                       </div>
 
@@ -625,10 +601,10 @@
                           Enhancing Code Vulnerability Detection via Vulnerability-Preserving Data Augmentation
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
-                          <a href="#">Shangqing Liu</a>,
+                          <a href="https://shangqing-liu.github.io/">Shangqing Liu</a>,
                           <a href="#">Wei Ma</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="#">Ruitao Feng</a>,
                           <a href="#">Yang Liu</a>
                         </div>
@@ -637,6 +613,11 @@
                             Proceedings of the ACM SIGPLAN/SIGBED International Conference on Languages, Compilers, and Tools for Embedded Systems (LCTES), 2024
                           </div>
                           <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Vulnerability Detection</span>
+                          <span class="keyword-tag">Data Augmentation</span>
+                          <span class="keyword-tag">Graph Neural Networks</span>
                         </div>
                         <div class="paper-short-desc">
                           The authors propose FGVulDet, a fine-grained vulnerability detector that uses multiple classifiers to identify specific vulnerability types, plus a novel vulnerability-preserving data augmentation strategy to combat data scarcity. An edge-aware GGNN model captures rich code semantics and improves generalization.
@@ -647,16 +628,10 @@
                     <div class="paper-thumbnail">
                       <img src="images/fgvuldet.png"
                           alt="FGVulDet vulnerability detection thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3EFGVulDet%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3EFGVulDet%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-6')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-6')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-6')">Links</button>
-                      </div>
-
                       <div id="abstract-6" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -701,11 +676,11 @@
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="#">Tianlin Li</a>,
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
                           <a href="#">Qing Guo</a>,
                           <a href="#">Aishan Liu</a>,
-                          <a href="#">Lei Ma</a>,
+                          <a href="https://www.malei.org/">Lei Ma</a>,
                           <a href="#">Yang Liu</a>
                         </div>
                         <div class="venue-row">
@@ -714,8 +689,13 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Fairness Repair</span>
+                          <span class="keyword-tag">Neural Network Testing</span>
+                          <span class="keyword-tag">Bias Mitigation</span>
+                        </div>
                         <div class="paper-short-desc">
-                          Faire repairs unfair behavior in DNNs by identifying neurons linked to protected attributes and inserting new “condition layers” that penalize biased neurons and reward task-relevant ones — achieving &gt;99% repair rate without requiring extra discriminatory examples.
+                          Faire repairs unfair behavior in DNNs by identifying neurons linked to protected attributes and inserting new "condition layers" that penalize biased neurons and reward task-relevant ones — achieving &gt;99% repair rate without requiring extra discriminatory examples.
                         </div>
                       </div>
                     </div>
@@ -723,16 +703,10 @@
                     <div class="paper-thumbnail">
                       <img src="images/faire.png"
                           alt="Faire fairness repair thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3EFaire%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3EFaire%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-7')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-7')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-7')">Links</button>
-                      </div>
-
                       <div id="abstract-7" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -779,12 +753,12 @@
                           NPC: Neuron Path Coverage via Characterizing Decision Logic of Deep Neural Networks
                         </div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="#">Tianlin Li</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
-                          <a href="#">Lei Ma</a>,
+                          <a href="https://www.malei.org/">Lei Ma</a>,
                           <a href="#">Qing Guo</a>,
-                          <a href="#">Felix Juefei-Xu</a>,
+                          <a href="https://xujuefei.com/">Felix Juefei-Xu</a>,
                           <a href="#">Yang Liu</a>
                         </div>
                         <div class="venue-row">
@@ -793,8 +767,13 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Test Coverage</span>
+                          <span class="keyword-tag">DNN Testing</span>
+                          <span class="keyword-tag">Decision Graph</span>
+                        </div>
                         <div class="paper-short-desc">
-                          NPC models a DNN’s internal decision logic as a “decision graph,” analogous to a control flow graph in traditional software, and defines new path coverage criteria to evaluate test adequacy. Higher neuron path coverage correlates with error exposure (natural and adversarial) and with output impartiality.
+                          NPC models a DNN's internal decision logic as a "decision graph," analogous to a control flow graph in traditional software, and defines new path coverage criteria to evaluate test adequacy. Higher neuron path coverage correlates with error exposure (natural and adversarial) and with output impartiality.
                         </div>
                       </div>
                     </div>
@@ -802,20 +781,14 @@
                     <div class="paper-thumbnail">
                       <img src="images/npc.png"
                           alt="Neuron Path Coverage thumbnail"
-                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'120\'%3E%3Crect fill=\'%23ddd\' width=\'160\' height=\'120\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3ENPC%3C/text%3E%3C/svg%3E'" />
+                          onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'%3E%3Crect fill=\'%23ddd\' width=\'800\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\' font-size=\'24\'%3ENPC%3C/text%3E%3C/svg%3E'" />
                     </div>
 
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-8')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-8')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-8')">Links</button>
-                      </div>
-
                       <div id="abstract-8" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
-                          This article introduces Neuron Path Coverage (NPC), a set of interpretable test coverage criteria for deep neural networks (DNNs). Analogous to traditional program analysis, the approach first constructs a decision graph from a DNN by interpreting neuron behaviors; each path in this graph corresponds to a particular decision logic of the network. From this graph, two path coverage criteria are defined to measure how thoroughly a test suite exercises the network’s decision behaviors. Large-scale experiments demonstrate that (1) these decision paths effectively capture how DNNs make predictions, and (2) higher NPC correlates with both the ability to surface natural and adversarial errors and the impartiality of the model’s outputs.
+                          This article introduces Neuron Path Coverage (NPC), a set of interpretable test coverage criteria for deep neural networks (DNNs). Analogous to traditional program analysis, the approach first constructs a decision graph from a DNN by interpreting neuron behaviors; each path in this graph corresponds to a particular decision logic of the network. From this graph, two path coverage criteria are defined to measure how thoroughly a test suite exercises the network's decision behaviors. Large-scale experiments demonstrate that (1) these decision paths effectively capture how DNNs make predictions, and (2) higher NPC correlates with both the ability to surface natural and adversarial errors and the impartiality of the model's outputs.
                         </div>
                       </div>
 
@@ -856,9 +829,9 @@
                       <div class="paper-info">
                         <div class="paper-title">Automatic RNN Repair via Model-based Analysis</div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="#">Wenbo Guo</a>,
-                          <a href="#">Lei Ma</a>,
+                          <a href="https://www.malei.org/">Lei Ma</a>,
                           <a href="#">Wei Le</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
                           <a href="#">Linjun Zhou</a>,
@@ -871,6 +844,11 @@
                           </div>
                           <span class="expand-icon">▼</span>
                         </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">RNN Repair</span>
+                          <span class="keyword-tag">Model-based Analysis</span>
+                          <span class="keyword-tag">Automaton</span>
+                        </div>
                         <div class="paper-short-desc">
                           A lightweight model-based influence analysis approach to understand and repair incorrect behaviors in RNNs using automaton-based feature extraction.
                         </div>
@@ -882,12 +860,6 @@
                     </div>
                     
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-9')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-9')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-9')">Links</button>
-                      </div>
-                      
                       <div id="abstract-9" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -928,9 +900,9 @@
                         <div class="paper-title">Watch out! Motion is Blurring the Vision of Your Deep Neural Networks</div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
                           <a href="#">Qing Guo</a>,
-                          <a href="#">Felix Juefei-Xu</a>,
-                          <a href="#">Xiaofei Xie</a>,
-                          <a href="#">Lei Ma</a>,
+                          <a href="https://xujuefei.com/">Felix Juefei-Xu</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
+                          <a href="https://www.malei.org/">Lei Ma</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
                           <a href="#">Bing Yu</a>,
                           <a href="#">Wei Feng</a>,
@@ -941,6 +913,11 @@
                             Advances in Neural Information Processing Systems (NeurIPS), 2020
                           </div>
                           <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Adversarial Attack</span>
+                          <span class="keyword-tag">Motion Blur</span>
+                          <span class="keyword-tag">DNN Robustness</span>
                         </div>
                         <div class="paper-short-desc">
                           Introducing a motion-based adversarial blur attack (ABBA) that generates visually natural motion-blurred adversarial examples to fool DNNs.
@@ -953,12 +930,6 @@
                     </div>
                     
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-10')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-10')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-10')">Links</button>
-                      </div>
-                      
                       <div id="abstract-10" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -997,10 +968,10 @@
                       <div class="paper-info">
                         <div class="paper-title">FakeSpotter: A Simple yet Robust Baseline for Spotting AI-Synthesized Fake Faces</div>
                         <div class="paper-authors" onclick="event.stopPropagation();">
-                          <a href="#">Run Wang</a>,
-                          <a href="#">Felix Juefei-Xu</a>,
-                          <a href="#">Lei Ma</a>,
-                          <a href="#">Xiaofei Xie</a>,
+                          <a href="https://wangrun.github.io/">Run Wang</a>,
+                          <a href="https://xujuefei.com/">Felix Juefei-Xu</a>,
+                          <a href="https://www.malei.org/">Lei Ma</a>,
+                          <a href="https://xiaofeixie.bitbucket.io/">Xiaofei Xie</a>,
                           <a href="#">Yihao Huang</a>,
                           <a href="https://scholar.google.com/citations?hl=en&user=GAe_mJUAAAAJ"><strong>Jian Wang</strong></a>,
                           <a href="#">Yang Liu</a>
@@ -1010,6 +981,11 @@
                             International Joint Conference on Artificial Intelligence (IJCAI), 2020
                           </div>
                           <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="paper-keywords">
+                          <span class="keyword-tag">Deepfake Detection</span>
+                          <span class="keyword-tag">Face Synthesis</span>
+                          <span class="keyword-tag">Neuron Analysis</span>
                         </div>
                         <div class="paper-short-desc">
                           Detecting AI-synthesized fake faces by monitoring neuron behavior and analyzing layer-by-layer activation patterns to capture subtle features.
@@ -1022,12 +998,6 @@
                     </div>
                     
                     <div class="paper-details">
-                      <div class="detail-buttons">
-                        <button class="detail-btn" onclick="toggleDetail(this, 'abstract-11')">Abstract</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'cite-11')">Cite</button>
-                        <button class="detail-btn" onclick="toggleDetail(this, 'links-11')">Links</button>
-                      </div>
-                      
                       <div id="abstract-11" class="detail-section">
                         <h3>Abstract</h3>
                         <div class="abstract-text">
@@ -1154,63 +1124,24 @@
       allContainers.forEach(c => {
         if (c !== container) {
           c.classList.remove('expanded');
-          // Hide all detail sections in other papers
-          const sections = c.querySelectorAll('.detail-section');
-          sections.forEach(s => s.classList.remove('show'));
-          const buttons = c.querySelectorAll('.detail-btn');
-          buttons.forEach(b => b.classList.remove('active'));
         }
       });
       
       // Toggle current paper
       container.classList.toggle('expanded');
-      
-      // If closing, hide all detail sections
-      if (!container.classList.contains('expanded')) {
-        const sections = container.querySelectorAll('.detail-section');
-        sections.forEach(s => s.classList.remove('show'));
-        const buttons = container.querySelectorAll('.detail-btn');
-        buttons.forEach(b => b.classList.remove('active'));
-      }
-    }
-    
-    function toggleDetail(button, sectionId) {
-      event.stopPropagation();
-      
-      const section = document.getElementById(sectionId);
-      const container = button.closest('.paper-container');
-      const allButtons = container.querySelectorAll('.detail-btn');
-      const allSections = container.querySelectorAll('.detail-section');
-      
-      // If clicking the same button, toggle it
-      if (button.classList.contains('active')) {
-        button.classList.remove('active');
-        section.classList.remove('show');
-      } else {
-        // Remove active from all buttons and hide all sections
-        allButtons.forEach(b => b.classList.remove('active'));
-        allSections.forEach(s => s.classList.remove('show'));
-        
-        // Show selected section
-        button.classList.add('active');
-        section.classList.add('show');
-      }
     }
 
     function copyCitation(e, btnEl) {
-      e.stopPropagation(); // don't collapse sections
+      e.stopPropagation();
       const targetId = btnEl.getAttribute('data-copy-target');
       if (!targetId) return;
       const block = document.getElementById(targetId);
       if (!block) return;
       
-      // Get raw text (not HTML)
       const text = block.innerText;
 
-      // Copy to clipboard using Clipboard API (modern browsers)
       navigator.clipboard.writeText(text)
         .then(() => {
-          // Give visual feedback
           btnEl.classList.add('copied');
           const original = btnEl.innerHTML;
           btnEl.innerHTML = "✔ Copied";
@@ -1220,7 +1151,6 @@
           }, 2000);
         })
         .catch(() => {
-          // fallback for very old browsers
           const tempTextArea = document.createElement('textarea');
           tempTextArea.value = text;
           document.body.appendChild(tempTextArea);
@@ -1243,5 +1173,3 @@
   </script>
 </body>
 </html>
-
-
